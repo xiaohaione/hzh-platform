@@ -5,11 +5,15 @@ import Login from '@/components/login/login.vue'
 
 Vue.use(Router)
 
+
 export default new Router({
   routes: [
     {
       name: 'login',
       path: '/login',
+      meta: {
+        level: 1
+      },
       component: Login
     }
   ]
