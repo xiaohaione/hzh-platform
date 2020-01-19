@@ -13,7 +13,7 @@
         </el-col>
         <el-col :span="2">
           <div class="grid-content bg-purple">
-            <a class="loginout" href="#">退出</a>
+            <a class="loginout" @click.prevent="handleSignout()" href="#">退出</a>
           </div>
         </el-col>
       </el-row>
@@ -21,7 +21,9 @@
 
     <el-container>
       <el-aside class="aside" width="200px">
-        <el-menu>
+        <!-- 侧边导航栏 -->
+        <!-- 开启油路模式 -->
+        <el-menu :router="true" :unique-opened="true">
           <!-- 标签1 (没有下级标签)-->
           <el-menu-item index="1">
             <i class="el-icon-s-home"></i>
@@ -36,7 +38,7 @@
               <span>用户与权限管理</span>
             </template>
             <!-- 导航内部标签 -->
-            <el-menu-item index="2-1">
+            <el-menu-item index="users">
               <i class="el-icon-location"></i>
               <span>用户列表</span>
             </el-menu-item>
@@ -80,7 +82,9 @@
         </el-menu>
       </el-aside>
 
-      <el-main class="main">Main</el-main>
+      <el-main class="main">
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -91,6 +95,16 @@ export default {
     const token = localStorage.getItem("token");
 
     if (!token) {
+      this.$router.push({ name: "login" });
+    }
+  },
+  methods: {
+    handleSignout() {
+      // 1.清楚缓存
+      localStorage.clear;
+      // 2.提示
+      this.$message.success("退出成功");
+      // 3.跳转到登录页
       this.$router.push({ name: "login" });
     }
   }
@@ -110,6 +124,7 @@ export default {
   background-color: #d3dce6;
 }
 .main {
+  text-align: left;
   background-color: #e9eef3;
 }
 

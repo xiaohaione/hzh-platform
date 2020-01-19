@@ -43,8 +43,11 @@ export default {
       // 1.跳转到home首页
       console.log("code:" + code);
       if (code === 200) {
-        // 保存token
+        // 保存token和用户，密码
         localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.sysUser.suName);
+        localStorage.setItem("password", data.sysUser.password);
+
         // 跳转到home 首页
         this.$router.push({ name: "home" });
         //提示登录成功

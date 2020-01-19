@@ -4,7 +4,7 @@
 3. .eslintgnore exlint排除文件
 4. .eslinttrc estlint配置文件
 
-二.登录
+二.登录以及校验
 (1).
   methods: {
     //登录请求
@@ -63,4 +63,18 @@
     > 列el-col
 
     #4.项目-首页-权限认证
+    beforeCreate() {
+    const token = localStorage.getItem("token");
 
+    if (!token) {
+      this.$router.push({ name: "login" });
+    }
+  }
+
+#5.项目-配置用户管理列路由
+(1).开启路由模式 :router:"true"
+(2).index='users'绑定用户的理由名称
+
+#6.项目-用户列表(重点)
+(1) el-card 卡片
+(2)
