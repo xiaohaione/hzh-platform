@@ -30,14 +30,32 @@ export default {
     };
   },
   methods: {
-    //登录请求
-    handleLongin() {
-      apiLogin
-        .login(this.fromdata.username, this.fromdata.password)
-        .then(res => {
-          alert(res);
-          console.log("res-->" + res);
-        });
+    //登录请求 异步请求代码 看起来更同步一样
+    async handleLongin() {
+      const res = await apiLogin.login(
+        this.fromdata.username,
+        this.fromdata.password
+      );
+
+      console.log(res);
+      const { data, success, code, message } = res.data;
+      // 登录成功
+      // 1.跳转到home首页
+      console.log("code:" + code);
+      if (code === 200) {
+        // 保存token
+        localStorage.setItem("token", data.token);
+        // 跳转到home 首页
+        this.$router.push({ name: "home" });
+        //提示登录成功
+        console.log("token-->" + localStorage.getItem("token"));
+        this.$message.success("登录成功");
+      } else {
+        this.$message.error(message);
+      }
+
+      // 登录不成功
+      // 1.提示错误信息
     }
   }
 };

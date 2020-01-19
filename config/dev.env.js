@@ -7,3 +7,5 @@ module.exports = merge(prodEnv, {
   ENV_CONFIG: '"dev"',
   BASE_API: '"http://localhost:9021/hzh-platform"',
 })
+
+// http://localhost:9021/hzh-platform

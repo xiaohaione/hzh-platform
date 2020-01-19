@@ -15,7 +15,7 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-router.push('/login')
+// 默认每次刷新都进入登录页面 router.push('/login')
 // 使用vue的插件
 // Vue.use(MyServerHttp)
 Vue.use(ElementUI)

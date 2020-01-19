@@ -8,8 +8,8 @@ module.exports = {
   dev: {
 
 
-    proxyTable: {
-      '/api': {
+    proxy: {
+      "/api": {
         target: 'http://localhost:9021', // hzh
         changeOrigin: true,
         pathRewrite: {
