@@ -56,7 +56,7 @@
               <span>商品管理</span>
             </template>
             <!-- 导航内部标签 -->
-            <el-menu-item index="3-1">
+            <el-menu-item index="video">
               <i class="el-icon-s-cooperation"></i>
               <span>商品列表</span>
             </el-menu-item>

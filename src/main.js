@@ -9,9 +9,19 @@ import ElementUI from 'element-ui'
 // 引入element-ui样式
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/reset.css'
-
+import moment from 'moment'
 
 import router from './router'
+
+// // 1.全局引用 (调用视频播放插件)
+// import VueVideoPlayer from 'vue-video-player'
+// import 'video.js/dist/video-js.css'
+// // 调用视频播放插件
+// Vue.use(VueVideoPlayer)
+import Video from 'video.js'
+import 'video.js/dist/video-js.css'
+Vue.prototype.$video = Video
+
 
 Vue.config.productionTip = false
 
@@ -20,6 +30,10 @@ Vue.config.productionTip = false
 // Vue.use(MyServerHttp)
 Vue.use(ElementUI)
 
+// 时间过滤器
+Vue.filter("fmtdate", (v) => {
+  return moment(v).format("YYYY-MM-DD HH:mm");
+});
 
 /* eslint-disable no-new */
 new Vue({

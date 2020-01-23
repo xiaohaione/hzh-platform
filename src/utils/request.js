@@ -3,6 +3,10 @@ import {
   Message,
   MessageBox
 } from 'element-ui'
+import {
+  getToken,
+  getSuName
+} from '@/utils/auth'
 
 // 创建axios实例
 const service = axios.create({
@@ -10,16 +14,19 @@ const service = axios.create({
   timeout: 15000, // 请求超时时间
   withCredentials: true,
   headers: {
-    'Content-Type': 'application/jsonp;charset=utf-8'
+    'Content-Type': 'application/jsonp;charset=utf-8',
+    "token": localStorage.getItem("token"),
+    "username": localStorage.getItem("username")
   },
+
   // params:添加到url的请求字符串中的，用于get请求。
   params: {},
   transformRequest: [function (data = {}) {
-    // if (getToken()) {
-    //   data = Object.assign(data, {
-    //     token: getToken()
-    //   })
-    // }
+    if (getToken()) {
+      data = Object.assign(data, {
+        token: getToken()
+      })
+    }
     data = JSON.stringify(data)
     return data
   }]
@@ -36,11 +43,11 @@ const cacheList = {
 
 // // request拦截器
 // service.interceptors.request.use(config => {
-//   // config.params.suName = getSuName()
-//   // config.params.token = getToken()
-//   // if (store.getters.token) {
-//   //   // config.headers['X-Token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
-//   // }
+//   config.params.suName = getSuName()
+//   config.params.token = getToken()
+//   if (store.getters.token) {
+//     // config.headers['X-Token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
+//   }
 //   return config
 // }, error => {
 //   console.log(error) // for debug

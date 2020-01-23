@@ -47,7 +47,7 @@ export default {
         localStorage.setItem("token", data.token);
         localStorage.setItem("username", data.sysUser.suName);
         localStorage.setItem("password", data.sysUser.password);
-
+        // resovle(token);
         // 跳转到home 首页
         this.$router.push({ name: "home" });
         //提示登录成功
