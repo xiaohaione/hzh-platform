@@ -14,59 +14,51 @@
       <el-button class="addButton" @click.prevent="pushAddVideo()" type="primary">添加</el-button>
     </el-row>
     <!-- 视频列表 -->
-    <!-- <p>
+    <p>
       一、import
-      <el-button class="play-btn">play1</el-button>
-    </p>-->
-    <el-table class="tableMargin" :data="videList" border style="width: 100%">
-      <el-table-column prop="videos" label="视频" width="100%">
-        <template>
-          <!-- <el-image style="border-radius:40px" :src="scope.row.avatarUrl" :fit="fit"></el-image> -->
-          <video controls @click.prevent="play1()" ref="videoDom1" class="video-box" autoplay>
-            <source src type="video/mp4" />
-          </video>
-        </template>
-      </el-table-column>
-    </el-table>
+      <el-button @click.prevent="play1()" class="play-btn">play1</el-button>
+    </p>
+    <video controls ref="videoDom1" class="video-box" autoplay>
+      <source src type="video/mp4" />
+    </video>
+
+    <p>
+      二、require
+      <button @click.prevent="play2()" class="play-btn">play2</button>
+    </p>
+    <video controls ref="videoDom2" class="video-box" autoplay>
+      <source src type="video/mp4" />
+    </video>
+
+    <p>
+      三、a标签
+      <a :href="video2" target="_blank" class="play-btn">play3</a>
+    </p>
   </el-card>
 </template>
 
 <script>
-import request from "@/utils/request.js";
 // 2.组件内引用
 // import { videoPlayer } from "vue-video-player";
-// import "video.js/dist/video-js.css";
-// import video1 from "../../../../Test/aa-30-542.mp4";
-// 连接路径并返回
-// function resolve(dir) {
-//   return path.join(Test, "..", dir);
-// }
-var importURL = "../../../../Test/aa-30-542.mp4";
+// import "video.js/dist/video-js.css"; ../../../../Test/aa-30-542.mp4
+import video1 from "../../../../Test/aa-30-542.mp4";
 export default {
   name: "HelloWorld",
   data() {
     return {
       videoUrl1: "",
       videoUrl2: "",
-      videList: [
-        {
-          videos: "D:/Test/aa-30-542.mp4"
-        }
-      ],
-      videoUrl: "D:/Test/aa-30-542.mp4"
+      video2: require("../../../../Test/aa-30-542.mp4")
     };
   },
-  created() {
-    this.play1();
-  },
+
   methods: {
     play1() {
-      // console.log("dir=>" + this.resolve.path());
-      this.$refs.videoDom1.src = require("../../../../Test/aa-30-542.mp4");
+      this.$refs.videoDom1.src = video1;
     },
-    // play2() {
-    //   this.$refs.videoDom2.src = this.videoUrl;
-    // },
+    play2() {
+      this.$refs.videoDom2.src = this.video2;
+    },
     pushAddVideo() {
       const vm = this;
       vm.$router.push({ name: "addVideo" });

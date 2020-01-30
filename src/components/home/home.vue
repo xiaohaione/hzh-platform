@@ -79,6 +79,23 @@
               <span>订单列表</span>
             </el-menu-item>
           </el-submenu>
+
+          <el-submenu index="5">
+            <!--  标签 -->
+            <template slot="title">
+              <i class="el-icon-s-order"></i>
+              <span>会员管理</span>
+            </template>
+            <!-- 导航内部标签 -->
+            <el-menu-item index="vipCard">
+              <i class="el-icon-s-order"></i>
+              <span>会员卡管理</span>
+            </el-menu-item>
+            <el-menu-item index="5-2">
+              <i class="el-icon-s-order"></i>
+              <span>会员用户管理</span>
+            </el-menu-item>
+          </el-submenu>
         </el-menu>
       </el-aside>
 

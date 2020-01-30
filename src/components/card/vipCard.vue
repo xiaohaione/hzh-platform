@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <div>fsg</div>
+</template>
 
 <script>
 export default {};

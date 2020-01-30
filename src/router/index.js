@@ -6,6 +6,7 @@ import Home from '@/components/home/home.vue'
 import Users from '@/components/users/users.vue'
 import video from '@/components/videos/video.vue'
 import addVideo from '@/components/videos/addVideo.vue'
+import vipCard from '@/components/card/vipCard.vue'
 
 
 
@@ -49,6 +50,11 @@ export default new Router({
           name: 'addVideo',
           path: '/addVideo',
           component: addVideo
+        },
+        {
+          name: 'vipCard',
+          path: '/vipCard',
+          component: vipCard
         }
       ]
     }
